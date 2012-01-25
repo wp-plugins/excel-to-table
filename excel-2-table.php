@@ -1,15 +1,16 @@
 <?php
 /*
- Plugin Name: Sport Championship
+ Plugin Name: Excel to Table
  Plugin URI: N/A
- Description: Plugin per la visualizzazione di campionati e di calendari;
+ Description: Actualy this convert a Excel file (up to 2003) in a Html table;
  Version: 0.1
  Author: Miro Barsocchi
  Author URI: http://www.mirobarsa.com
  */
+ 
 require_once 'excel_reader2.php';
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-define("DEFAULT_TEMP_FILE",'wp-content'.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'sport-championship'.DIRECTORY_SEPARATOR.'excel_file');
+define("DEFAULT_TEMP_FILE",'wp-content'.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'excel-2-table'.DIRECTORY_SEPARATOR.'excel_file');
 
 
 function TableDatas($file) {
@@ -22,7 +23,7 @@ function TableDatas($file) {
 
 
 
-function championship_modify() {
+function excel_2_table_modify() {
 	if(isset($_POST['deletecheck'])) {
 		$filesToDelete = $_POST['deletecheck'];
 		foreach($filesToDelete as $filename) {
@@ -52,7 +53,7 @@ function championship_modify() {
 <div id='icon-options-general' class='icon32'><br />
 </div>
 
-<h2>Modifica calendario</h2>
+<h2>Excel Files</h2>
 <br/>
 <br/>
 </div>
@@ -71,7 +72,7 @@ function championship_modify() {
 				$cont =0;
 				foreach($excels as $excel) {
 					$nameExcel = basename($excel , ".xls");
-					$linkForDownload = plugins_url().'/sport-championship/excel_file/'.$nameExcel.'.xls';
+					$linkForDownload = plugins_url().'/excel-2-table/excel_file/'.$nameExcel.'.xls';
 					$class = ('alternate' != $class) ? 'alternate' : ''; ?>
 				    <tr>
 						<th scope="row" class="check-column">
@@ -97,7 +98,7 @@ function championship_modify() {
 
 function show_championship_submenu() {
 	if(function_exists('add_submenu_page')) {
-		add_object_page('championship','championship',0,'championship-mb','championship_modify');
+		add_object_page('excel-2-table','excel-2-table',0,'excel-2-table-mb','excel_2_table_modify');
 	}
 }
 
@@ -129,6 +130,6 @@ function parameter_queryvars_for_me( $qvars ){
 }
 
 add_filter('query_vars', 'parameter_queryvars_for_me' );
-add_shortcode( 'championship_table','show_championship_table');
+add_shortcode( 'excel_table','show_championship_table');
 add_action('admin_menu','show_championship_submenu');
 ?>
