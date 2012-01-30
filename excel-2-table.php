@@ -3,7 +3,7 @@
  Plugin Name: Excel to Table
  Plugin URI: N/A
  Description: Actualy this convert a Excel file (up to 2003) in a Html table;
- Version: 1.0
+ Version: 1.1
  Author: Miro Barsocchi
  Author URI: http://www.mirobarsa.com
  */
@@ -57,12 +57,22 @@ function excel_2_table_modify() {
 <br/>
 <br/>
 </div>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="LCK3HT6AQU56U">
+<input type="image" src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1"> Aiuta un piccolo sviluppatore a crescere! 
+</form>
+<p>
+<p>
+
 <form id="champ-settings" enctype="multipart/form-data" action="" method="post">
 <table  class="widefat">
   			<thead>
   				<tr>
 					<th scope="col" width="15%">Elimina</th>
 					<th scope="col" >Nome file</th>
+					<th scope="col" >Shortcode</th>
 				</tr>
   			</thead>
   			<tbody>
@@ -78,10 +88,15 @@ function excel_2_table_modify() {
 						<th scope="row" class="check-column">
 						<input type="checkbox" name="deletecheck[<?php echo $cont; ?>]" value="<?php echo $nameExcel.".xls";?>"/></th>
 						<td><a href="<?php echo $linkForDownload;?>"><?php echo $nameExcel;?></a></td>
+						<td>[excel_table fname="<?php echo urlencode($nameExcel);?>"]</a></td>
 					</tr>
-	 			<?php $cont ++;} ?>
+	 			<?php $cont ++;}?>
+				
+				<tr><td colspan="2">Per visualizzare i link a tutti i file inserire lo shortcode</td>
+				<td> [excel_table]</td>
+				</tr>
 	 		<?php } else { ?>
-				<tr id='no-id'><td scope="row" colspan="5"><em>Nessun campionato</em></td></tr>
+				<tr id='no-id'><td scope="row" colspan="5"><em>Nessun file</em></td></tr>
 			<?php 
 			}
 		?>
@@ -102,24 +117,29 @@ function show_championship_submenu() {
 	}
 }
 
-function show_championship_table() {
+function show_championship_table($atts) {
 	global $wp_query;
 	$excels = glob(DEFAULT_TEMP_FILE.DIRECTORY_SEPARATOR."*.xls");
-	if (!isset($wp_query->query_vars['girn'])) {
-		$cont=1;
+	if(isset($atts['fname'])) {
+		$filename = urldecode($atts['fname']);
+		$filename =DEFAULT_TEMP_FILE.DIRECTORY_SEPARATOR.$filename.".xls";
+		if(file_exists($filename)){
+			$output = TableDatas($filename);
+		}
+	}else if (!isset($wp_query->query_vars['girn'])) {
 		foreach ($excels as $excel) {
 			$link = basename($excel , ".xls");
 			$result = get_permalink();
+			$cont = urlencode($link);
 			$params = array( 'girn' => $cont );
 			$result = add_query_arg( $params, $result );
 			$output .= "<a href=\"".$result ."\" >".$link."</a>
 			<p>";
-			$cont++;
 		}
 	}else {
-		$intIndex =intval($wp_query->query_vars['girn']);
-		$intIndex -= 1;
-		$output = TableDatas($excels[$intIndex]);
+		$rawFileName =$wp_query->query_vars['girn'];
+		$fileName = DEFAULT_TEMP_FILE.DIRECTORY_SEPARATOR.urldecode($rawFileName).".xls";
+		$output = TableDatas($fileName);
 	}
 	return $output;
 }
