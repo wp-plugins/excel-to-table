@@ -15,7 +15,9 @@ plugin convert all excel files in a specified folder in html table. You can chos
 
 Let
 
-    myFaboluosExcelFile.xls is the file you want to view a s table
+    myFaboluosExcelFile.xls 
+
+is the file you want to view a s table
 
 Upload it via plugin manager, than use the shortcode
 
@@ -25,7 +27,9 @@ to put a html table wherever you want in a page.
 
 This plugin also create a list of link of Excel file in a page where you put the tag 
 
-    [excel_table] and when you open one of it you could see a page with the table
+    [excel_table] 
+
+and when you open one of it you could see a page with the table
 
 == Installation ==
 
@@ -36,7 +40,7 @@ e.g.
 1. Upload  folder `excel-2-table` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Place Excel files in folder 'excel_file' inside path
-1. Place `[excel_table]` in your templates
+1. Place shortcode in your templates
 
 == Frequently Asked Questions ==
 
