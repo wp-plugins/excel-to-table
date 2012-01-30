@@ -3,7 +3,7 @@
  Plugin Name: Excel to Table
  Plugin URI: N/A
  Description: Actualy this convert a Excel file (up to 2003) in a Html table;
- Version: 0.1
+ Version: 1.0
  Author: Miro Barsocchi
  Author URI: http://www.mirobarsa.com
  */

@@ -30,13 +30,9 @@ e.g.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Is this stable and proved =
 
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+No, I'm currently working on it (Jan 2012).
 
 == Screenshots ==
 
