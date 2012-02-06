@@ -4,7 +4,7 @@ Donate link: http://example.com/
 Tags: table, excel, office, convert
 Requires at least: 2.0.2
 Tested up to: 3.3.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 Convert Excel files to html standard tabel
 
@@ -55,6 +55,9 @@ No, I'm currently working on it (Jan 2012).
 3. View of example table
 
 == Changelog ==
+= 1.2 =
+- Solved one BIG bug for Path
+
 = 1.1 =
 
 - Table shortcode introduced, now it is possible to link just one file in a page
