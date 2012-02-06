@@ -10,7 +10,7 @@
  
 require_once 'excel_reader2.php';
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-define("DEFAULT_TEMP_FILE",'wp-content'.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'excel-2-table'.DIRECTORY_SEPARATOR.'excel_file');
+define("DEFAULT_TEMP_FILE",'wp-content'.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'excel-to-table'.DIRECTORY_SEPARATOR.'excel_file');
 
 
 function TableDatas($file) {
