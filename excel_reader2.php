@@ -753,16 +753,15 @@ class Spreadsheet_Excel_Reader {
 					}
 					$out .= "\n\t\t<td style=\"$style\"" . ($colspan > 1?" colspan=$colspan":"") . ($rowspan > 1?" rowspan=$rowspan":"") . ">";
 					$val = $this->val($row,$col,$sheet);
-					if ($val=='') {
-						$val="&nbsp;";
-					}else { 
-						$val = htmlentities($val, ENT_COMPAT, $this->_defaultEncoding);
-						$link = $this->hyperlink($row,$col,$sheet);
-						if ($link!='') {
-							$val = "<a href=\"$link\">$val</a>";
-						}
+					$val =htmlentities($val, ENT_COMPAT|ENT_IGNORE, '');
+					if ($val == '') {
+						$val ="&nbsp;";
 					}
-					$out .= "<nobr>".nl2br($val)."</nobr>";
+					$link = $this->hyperlink($row,$col,$sheet);
+					if ($link!='') {
+						$val = "<a href=\"$link\">$val</a>";
+					}
+					$out .= nl2br($val);
 					$out .= "</td>";
 				}
 			}

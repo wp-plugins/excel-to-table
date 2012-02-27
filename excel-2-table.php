@@ -3,7 +3,7 @@
  Plugin Name: Excel to Table
  Plugin URI: N/A
  Description: Actualy this convert a Excel file (up to 2003) in a Html table;
- Version: 1.2
+ Version: 1.3
  Author: Miro Barsocchi
  Author URI: http://www.mirobarsa.com
  */
@@ -88,7 +88,7 @@ function excel_2_table_modify() {
 						<th scope="row" class="check-column">
 						<input type="checkbox" name="deletecheck[<?php echo $cont; ?>]" value="<?php echo $nameExcel.".xls";?>"/></th>
 						<td><a href="<?php echo $linkForDownload;?>"><?php echo $nameExcel;?></a></td>
-						<td>[excel_table fname="<?php echo urlencode($nameExcel);?>"]</a></td>
+						<td>[excel_table fname="<?php echo urlencode($nameExcel);?>"]</td>
 					</tr>
 	 			<?php $cont ++;}?>
 				
