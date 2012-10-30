@@ -55,6 +55,9 @@ No, I'm currently working on it (Jan 2012).
 3. View of example table
 
 == Changelog ==
+= 1.4 =
+- Removed multiple sheet error
+
 = 1.3 =
 - Char encoding conversion fixed (almost) and solved some empty field
 
@@ -73,4 +76,5 @@ No, I'm currently working on it (Jan 2012).
 
 == Upgrade Notice ==
 
-I'm planning to introduce DB support in order to reduce computiational needs. Obviously i need transaltion, it's on my roadmap, but not now....
+I'm planning to introduce DB support in order to reduce computiational needs. Obviously 
+i need transaltion, it's on my roadmap, but not now....
