@@ -15,9 +15,8 @@ define("DEFAULT_TEMP_FILE",'wp-content'.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_
 
 function TableDatas($file) {
 	$data = new Spreadsheet_Excel_Reader($file);
+	
 	$html = $data->dump_clean(true,true);
-	$html .= "<p>";
-	$html .= $data->dump_clean(true,true,1);
 	return $html;
 }
 
@@ -113,7 +112,7 @@ function excel_2_table_modify() {
 
 function show_championship_submenu() {
 	if(function_exists('add_submenu_page')) {
-		add_object_page('excel-2-table','excel-2-table',0,'excel-2-table-mb','excel_2_table_modify');
+		add_object_page('excel-2-table','excel-2-table','administrator','excel-2-table-mb','excel_2_table_modify');
 	}
 }
 
